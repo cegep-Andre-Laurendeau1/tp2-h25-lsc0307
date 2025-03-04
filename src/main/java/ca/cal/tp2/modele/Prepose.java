@@ -10,6 +10,6 @@ public class Prepose extends Utilisateur{
     }
 
     public Prepose() {
-
+        super();
     }
 }
