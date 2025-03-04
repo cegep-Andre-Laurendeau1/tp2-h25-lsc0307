@@ -15,6 +15,12 @@ public class Main {
 
         preposeService.saveEmprunteur(new Emprunteur("Leandro", "abc@gmail.com", "123456789"));
 
+        preposeService.saveEmprunteur(new Emprunteur("Moi", "def@gmail.com", "123456789"));
+
+        System.out.println(preposeService.findByNameAndEmail("Leandro","abc@gmail.com"));
+
+        System.out.println(preposeService.findByNameAndEmail("Moi","def@gmail.com"));
+
         Thread.currentThread().join();
     }
 }
