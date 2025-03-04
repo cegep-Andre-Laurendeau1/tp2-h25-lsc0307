@@ -1,10 +1,13 @@
 package ca.cal.tp2.modele;
 
 
+
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.MappedSuperclass;
 
+@MappedSuperclass
 public abstract class Utilisateur {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -14,8 +17,7 @@ public abstract class Utilisateur {
     private String email;
     private String numeroTelephone;
 
-    public Utilisateur (long id, String nom, String email, String numeroTelephone) {
-        this.id = id;
+    public Utilisateur ( String nom, String email, String numeroTelephone) {
         this.nom = nom;
         this.email = email;
         this.numeroTelephone = numeroTelephone;
