@@ -1,8 +1,15 @@
 package ca.cal.tp2.modele;
 
 
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
 public abstract class Utilisateur {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+
     private String nom;
     private String email;
     private String numeroTelephone;
@@ -13,6 +20,8 @@ public abstract class Utilisateur {
         this.email = email;
         this.numeroTelephone = numeroTelephone;
     }
+
+    protected Utilisateur() {}
 
     public long getId() {
         return id;
