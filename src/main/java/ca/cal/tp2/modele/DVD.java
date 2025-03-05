@@ -11,11 +11,14 @@ public class DVD extends Document {
     private String director;
     private int rating;
     private int nbJoursEmpruntGratuitement = 7;
+    private int duree;
 
-    public DVD(String nom, LocalDate dateParution, int nombreExemplaires, String director, int rating) {
+
+    public DVD(String nom, LocalDate dateParution, int nombreExemplaires, String director, int rating,int duree) {
         super(nom, dateParution, nombreExemplaires);
         this.director = director;
         this.rating = rating;
+        this.duree = duree;
     }
 
     public DVD() {

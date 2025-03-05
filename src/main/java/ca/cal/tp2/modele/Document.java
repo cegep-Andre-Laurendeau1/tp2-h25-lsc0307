@@ -8,6 +8,7 @@ import java.time.LocalDate;
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "type")
+@Table(uniqueConstraints = {@UniqueConstraint(columnNames = {"nom"})})
 public abstract class Document {
 
     @Id
