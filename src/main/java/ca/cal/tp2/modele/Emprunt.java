@@ -3,14 +3,13 @@ package ca.cal.tp2.modele;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 @Entity
 public class Emprunt {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int borrowID;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
     @ManyToOne
     @JoinColumn(name = "emprunteur_id")
