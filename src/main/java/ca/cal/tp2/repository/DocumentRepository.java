@@ -12,4 +12,6 @@ public interface DocumentRepository {
 
     List<Livre> findLivresByAuteur(String auteur);
 
+    List<Livre> findLivresByAnnee(int annee);
+
 }

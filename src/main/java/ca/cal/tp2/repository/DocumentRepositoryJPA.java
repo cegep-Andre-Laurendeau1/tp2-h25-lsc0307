@@ -42,4 +42,14 @@ public class DocumentRepositoryJPA implements DocumentRepository {
             return query.getResultList();
         }
     }
+
+    @Override
+    public List<Livre> findLivresByAnnee(int annee) {
+        try (EntityManager entityManager = entityManagerFactory.createEntityManager()) {
+            TypedQuery<Livre> query = entityManager.createQuery(
+                    "SELECT l FROM Livre l WHERE YEAR(l.dateParution) = :annee", Livre.class);
+            query.setParameter("annee", annee);
+            return query.getResultList();
+        }
+    }
 }

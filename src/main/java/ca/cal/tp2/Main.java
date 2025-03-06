@@ -83,6 +83,11 @@ public class Main {
         for (LivreDTO livreDTO : livresTrouvesParAuteur) {
             System.out.println(livreDTO.titre() + " - " + livreDTO.auteur()+ " - " + livreDTO.editeur() + " - " + livreDTO.nbExemplaires());
         }
+
+        List<LivreDTO> livresTrouvesParAnnee = emprunteurService.findLivresByAnnee(1930);
+        for (LivreDTO livreDTO : livresTrouvesParAnnee) {
+            System.out.println(livreDTO.titre() + " - " + livreDTO.auteur()+ " - " + livreDTO.editeur() + " - " + livreDTO.nbExemplaires());
+        }
         Thread.currentThread().join();
     }
 }

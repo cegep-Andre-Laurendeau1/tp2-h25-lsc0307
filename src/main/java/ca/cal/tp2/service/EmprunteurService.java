@@ -44,4 +44,17 @@ public class EmprunteurService {
         return livresDTO;
 
     }
+
+    public List<LivreDTO> findLivresByAnnee(int annee) {
+        List<Livre> livres = documentRepository.findLivresByAnnee(annee);
+        List<LivreDTO> livresDTO = new ArrayList<>();
+
+        for (Livre livre : livres) {
+            LivreDTO livreDTO = LivreDTO.toDto(livre);
+            livresDTO.add(livreDTO);
+        }
+
+        return livresDTO;
+
+    }
 }
