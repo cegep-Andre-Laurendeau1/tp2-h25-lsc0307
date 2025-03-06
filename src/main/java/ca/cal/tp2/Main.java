@@ -7,6 +7,7 @@ import ca.cal.tp2.repository.PreposeRepositoryJPA;
 import ca.cal.tp2.service.EmprunteurService;
 import ca.cal.tp2.service.PreposeService;
 import ca.cal.tp2.service.dto.CdDTO;
+import ca.cal.tp2.service.dto.DvdDTO;
 import ca.cal.tp2.service.dto.LivreDTO;
 
 import java.sql.SQLException;
@@ -109,6 +110,11 @@ public class Main {
         List<CdDTO> cdsTrouvesParArtiste = emprunteurService.findCdsByArtiste("Michael Jackson");
         for(CdDTO cdDTO : cdsTrouvesParArtiste){
             System.out.println(cdDTO.titre() + " - " + cdDTO.duree() + " - " + cdDTO.genre() + " - " + cdDTO.artiste());
+        }
+
+        List<DvdDTO> dvdsTrouvesParTitre = emprunteurService.findDvdsByTitre("Knight");
+        for(DvdDTO dvdDTO : dvdsTrouvesParTitre){
+            System.out.println(dvdDTO.titre() + " - " + dvdDTO.duree() + " - " + dvdDTO.director() + " - " + dvdDTO.dateParution() + " - " + dvdDTO.nombreExemplaires() );
         }
         Thread.currentThread().join();
     }

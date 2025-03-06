@@ -1,6 +1,7 @@
 package ca.cal.tp2.repository;
 
 import ca.cal.tp2.modele.CD;
+import ca.cal.tp2.modele.DVD;
 import ca.cal.tp2.modele.Document;
 import ca.cal.tp2.modele.Livre;
 
@@ -18,4 +19,6 @@ public interface DocumentRepository {
     List<CD> findCdsByTitre(String titre);
 
     List<CD> findCdsByArtiste(String artiste);
+
+    List<DVD> findDvdsByTitre(String titre);
 }

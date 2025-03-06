@@ -1,11 +1,13 @@
 package ca.cal.tp2.service;
 
 import ca.cal.tp2.modele.CD;
+import ca.cal.tp2.modele.DVD;
 import ca.cal.tp2.modele.Emprunteur;
 import ca.cal.tp2.modele.Livre;
 import ca.cal.tp2.repository.DocumentRepository;
 import ca.cal.tp2.repository.PreposeRepository;
 import ca.cal.tp2.service.dto.CdDTO;
+import ca.cal.tp2.service.dto.DvdDTO;
 import ca.cal.tp2.service.dto.EmprunteurDTO;
 import ca.cal.tp2.service.dto.LivreDTO;
 
@@ -83,5 +85,18 @@ public class EmprunteurService {
         }
 
         return cdsDTO;
+    }
+
+    public List<DvdDTO> findDvdsByTitre(String titre) {
+        List<DVD> dvds = documentRepository.findDvdsByTitre(titre);
+        List<DvdDTO> dvdsDTO = new ArrayList<>();
+
+        for (DVD dvd : dvds) {
+            DvdDTO dvdDTO = DvdDTO.toDto(dvd);
+            dvdsDTO.add(dvdDTO);
+        }
+
+        return dvdsDTO;
+
     }
 }

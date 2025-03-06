@@ -1,9 +1,6 @@
 package ca.cal.tp2.repository;
 
-import ca.cal.tp2.modele.CD;
-import ca.cal.tp2.modele.Document;
-import ca.cal.tp2.modele.Emprunteur;
-import ca.cal.tp2.modele.Livre;
+import ca.cal.tp2.modele.*;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
@@ -70,6 +67,16 @@ public class DocumentRepositoryJPA implements DocumentRepository {
             TypedQuery<CD> query = entityManager.createQuery(
                     "SELECT c FROM CD c WHERE LOWER(c.artiste) = LOWER(:artiste)", CD.class);
             query.setParameter("artiste", artiste);
+            return query.getResultList();
+        }
+    }
+
+    @Override
+    public List<DVD> findDvdsByTitre(String titre) {
+        try (EntityManager entityManager = entityManagerFactory.createEntityManager()) {
+            TypedQuery<DVD> query = entityManager.createQuery(
+                    "SELECT d FROM DVD d WHERE LOWER(d.titre) LIKE LOWER(:titre)", DVD.class);
+            query.setParameter("titre", "%" + titre + "%");
             return query.getResultList();
         }
     }
