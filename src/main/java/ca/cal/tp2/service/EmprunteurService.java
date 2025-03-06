@@ -24,8 +24,21 @@ public class EmprunteurService {
         List<LivreDTO> livresDTO = new ArrayList<>();
 
         for (Livre livre : livres) {
-            LivreDTO livreDTO = LivreDTO.toDto(livre); // Convertir chaque livre
-            livresDTO.add(livreDTO); // Ajouter à la liste des DTO
+            LivreDTO livreDTO = LivreDTO.toDto(livre);
+            livresDTO.add(livreDTO);
+        }
+
+        return livresDTO;
+
+    }
+
+    public List<LivreDTO> findLivresByAuteur(String auteur) {
+        List<Livre> livres = documentRepository.findLivresByAuteur(auteur);
+        List<LivreDTO> livresDTO = new ArrayList<>();
+
+        for (Livre livre : livres) {
+            LivreDTO livreDTO = LivreDTO.toDto(livre);
+            livresDTO.add(livreDTO);
         }
 
         return livresDTO;

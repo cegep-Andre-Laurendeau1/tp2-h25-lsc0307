@@ -37,6 +37,16 @@ public class Main {
         ));
 
         preposeService.saveDocument(new Livre(
+                "Le hobbit",
+                LocalDate.of(1930, 7, 29),
+                2,
+                "978-3-16-123456-3",
+                "J.R.R",
+                "Tolkien"
+
+        ));
+
+        preposeService.saveDocument(new Livre(
                 "Seigneur Jesus",
                 LocalDate.of(0000, 1, 1),
                 2,
@@ -66,6 +76,11 @@ public class Main {
 
         List<LivreDTO> livresTrouvesParTitre = emprunteurService.findLivresByTitre("SEIGNEUR");
         for (LivreDTO livreDTO : livresTrouvesParTitre) {
+            System.out.println(livreDTO.titre() + " - " + livreDTO.auteur()+ " - " + livreDTO.editeur() + " - " + livreDTO.nbExemplaires());
+        }
+
+        List<LivreDTO> livresTrouvesParAuteur = emprunteurService.findLivresByAuteur("TOLKIEN");
+        for (LivreDTO livreDTO : livresTrouvesParAuteur) {
             System.out.println(livreDTO.titre() + " - " + livreDTO.auteur()+ " - " + livreDTO.editeur() + " - " + livreDTO.nbExemplaires());
         }
         Thread.currentThread().join();

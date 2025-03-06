@@ -29,7 +29,6 @@ public class PreposeService {
     public EmprunteurDTO findByNameAndEmail(String nom, String email) {
         Emprunteur emprunteur = preposeRepository.findByNameAndEmail(nom, email);
         return EmprunteurDTO.toDto(emprunteur);
-
     }
 
 

@@ -10,4 +10,6 @@ public interface DocumentRepository {
 
     List<Livre> findLivresByTitre(String titre);
 
+    List<Livre> findLivresByAuteur(String auteur);
+
 }

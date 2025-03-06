@@ -28,8 +28,18 @@ public class DocumentRepositoryJPA implements DocumentRepository {
         try (EntityManager entityManager = entityManagerFactory.createEntityManager()) {
             TypedQuery<Livre> query = entityManager.createQuery(
                     "SELECT l FROM Livre l WHERE LOWER(l.titre) LIKE LOWER(:titre)", Livre.class);
-            query.setParameter("titre", "%" + titre + "%"); // Recherche partielle
-            return query.getResultList(); // Renvoie la liste de livres trouvés
+            query.setParameter("titre", "%" + titre + "%");
+            return query.getResultList();
+        }
+    }
+
+    @Override
+    public List<Livre> findLivresByAuteur(String auteur) {
+        try (EntityManager entityManager = entityManagerFactory.createEntityManager()) {
+            TypedQuery<Livre> query = entityManager.createQuery(
+                    "SELECT l FROM Livre l WHERE LOWER(l.auteur) = LOWER(:auteur)", Livre.class);
+            query.setParameter("auteur", auteur);
+            return query.getResultList();
         }
     }
 }
