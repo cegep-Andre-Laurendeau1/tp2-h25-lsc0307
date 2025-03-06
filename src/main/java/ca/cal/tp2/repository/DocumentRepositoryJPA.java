@@ -80,4 +80,14 @@ public class DocumentRepositoryJPA implements DocumentRepository {
             return query.getResultList();
         }
     }
+
+    @Override
+    public List<DVD> findDvdsByDirector(String director) {
+        try (EntityManager entityManager = entityManagerFactory.createEntityManager()) {
+            TypedQuery<DVD> query = entityManager.createQuery(
+                    "SELECT d FROM DVD d WHERE LOWER(d.director) = LOWER(:director)", DVD.class);
+            query.setParameter("director", director);
+            return query.getResultList();
+        }
+    }
 }

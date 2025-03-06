@@ -99,4 +99,16 @@ public class EmprunteurService {
         return dvdsDTO;
 
     }
+
+    public List<DvdDTO> findDvdsByDirector(String director){
+        List<DVD> dvds = documentRepository.findDvdsByDirector(director);
+        List<DvdDTO> dvdsDTO = new ArrayList<>();
+
+        for (DVD dvd : dvds) {
+            DvdDTO dvdDTO = DvdDTO.toDto(dvd);
+            dvdsDTO.add(dvdDTO);
+        }
+
+        return dvdsDTO;
+    }
 }

@@ -85,6 +85,15 @@ public class Main {
                 45
         ));
 
+        preposeService.saveDocument(new DVD(
+                "The JOKER",
+                LocalDate.of(2010, 7, 18),
+                4,
+                "Batman",
+                90,
+                60
+        ));
+
         EmprunteurService emprunteurService = new EmprunteurService(new DocumentRepositoryJPA());
 
         List<LivreDTO> livresTrouvesParTitre = emprunteurService.findLivresByTitre("SEIGNEUR");
@@ -114,8 +123,15 @@ public class Main {
 
         List<DvdDTO> dvdsTrouvesParTitre = emprunteurService.findDvdsByTitre("Knight");
         for(DvdDTO dvdDTO : dvdsTrouvesParTitre){
-            System.out.println(dvdDTO.titre() + " - " + dvdDTO.duree() + " - " + dvdDTO.director() + " - " + dvdDTO.dateParution() + " - " + dvdDTO.nombreExemplaires() );
+            System.out.println(dvdDTO.titre() + " - " + dvdDTO.duree() + " - " + dvdDTO.director() + " - " + dvdDTO.dateParution() + " - " + dvdDTO.nombreExemplaires() + " - " + dvdDTO.rating() );
         }
+
+        List<DvdDTO> dvdsTrouvesParDirector = emprunteurService.findDvdsByDirector("batman");
+        for(DvdDTO dvdDTO : dvdsTrouvesParDirector){
+            System.out.println(dvdDTO.titre() + " - " + dvdDTO.duree() + " - " + dvdDTO.director() + " - " + dvdDTO.dateParution() + " - " + dvdDTO.nombreExemplaires() + " - " + dvdDTO.rating() );
+        }
+
+
         Thread.currentThread().join();
     }
 }

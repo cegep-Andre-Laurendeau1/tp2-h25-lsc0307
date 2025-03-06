@@ -21,4 +21,6 @@ public interface DocumentRepository {
     List<CD> findCdsByArtiste(String artiste);
 
     List<DVD> findDvdsByTitre(String titre);
+
+    List<DVD> findDvdsByDirector(String director);
 }
