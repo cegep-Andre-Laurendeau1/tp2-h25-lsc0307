@@ -12,8 +12,8 @@ public class CD extends Document {
     private int duree;
     private int nbJoursEmpruntGratuitement = 14;
 
-    public CD(String nom, LocalDate dateParution, int nombreExemplaires, String artiste, int duree) {
-        super(nom, dateParution, nombreExemplaires);
+    public CD(String titre, LocalDate dateParution, int nombreExemplaires, String artiste, int duree) {
+        super(titre, dateParution, nombreExemplaires);
         this.artiste = artiste;
         this.duree = duree;
     }
@@ -21,6 +21,15 @@ public class CD extends Document {
     public CD() {
         super();
     }
+
+    public String getArtiste() {
+        return artiste;
+    }
+
+    public int getDuree() {
+        return duree;
+    }
+
 
     @Override
     public int getDureeEmpruntEnJours() {

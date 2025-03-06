@@ -14,8 +14,8 @@ public class DVD extends Document {
     private int duree;
 
 
-    public DVD(String nom, LocalDate dateParution, int nombreExemplaires, String director, int rating,int duree) {
-        super(nom, dateParution, nombreExemplaires);
+    public DVD(String titre,LocalDate dateParution, int nombreExemplaires, String director, int rating,int duree) {
+        super(titre, dateParution, nombreExemplaires);
         this.director = director;
         this.rating = rating;
         this.duree = duree;
@@ -23,6 +23,18 @@ public class DVD extends Document {
 
     public DVD() {
         super();
+    }
+
+    public int getDuree() {
+        return duree;
+    }
+
+    public int getRating() {
+        return rating;
+    }
+
+    public String getDirector() {
+        return director;
     }
 
     @Override

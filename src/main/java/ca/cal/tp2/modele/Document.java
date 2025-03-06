@@ -14,12 +14,12 @@ public abstract class Document {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    protected String nom;
+    protected String titre;
     protected LocalDate dateParution;
     protected int nbExemplaires;
 
-    public Document(String nom, LocalDate dateParution, int nbExemplaires) {
-        this.nom = nom;
+    public Document(String titre, LocalDate dateParution, int nbExemplaires) {
+        this.titre = titre;
         this.dateParution = dateParution;
         this.nbExemplaires = nbExemplaires;
     }
@@ -27,6 +27,17 @@ public abstract class Document {
     public Document() {
     }
 
+    public String getTitre() {
+        return titre;
+    }
+
+    public LocalDate getDateParution() {
+        return dateParution;
+    }
+
+    public int getNbExemplaires() {
+        return nbExemplaires;
+    }
 
     public abstract int getDureeEmpruntEnJours();
 }
