@@ -55,11 +55,21 @@ public class DocumentRepositoryJPA implements DocumentRepository {
     }
 
     @Override
-    public  List<CD> findCdsByTitre(String titre) {
+    public List<CD> findCdsByTitre(String titre) {
         try (EntityManager entityManager = entityManagerFactory.createEntityManager()) {
             TypedQuery<CD> query = entityManager.createQuery(
                     "SELECT c FROM CD c WHERE LOWER(c.titre) LIKE LOWER(:titre)", CD.class);
             query.setParameter("titre", "%" + titre + "%");
+            return query.getResultList();
+        }
+    }
+
+    @Override
+    public List<CD> findCdsByArtiste(String artiste){
+        try (EntityManager entityManager = entityManagerFactory.createEntityManager()) {
+            TypedQuery<CD> query = entityManager.createQuery(
+                    "SELECT c FROM CD c WHERE LOWER(c.artiste) = LOWER(:artiste)", CD.class);
+            query.setParameter("artiste", artiste);
             return query.getResultList();
         }
     }

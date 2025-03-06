@@ -61,15 +61,25 @@ public class Main {
                 "The Dark Side of the Moon",
                 LocalDate.of(1973, 3, 1),
                 1,
-                "978-3-16-148410-0",
+                "Michael Jackson",
                 50,
-                "Fantasie"
+                "Classique"
         ));
+
+        preposeService.saveDocument(new CD(
+                "Thriller",
+                LocalDate.of(1980, 3, 1),
+                6,
+                "Michael Jackson",
+                2,
+                "Pop"
+        ));
+
         preposeService.saveDocument(new DVD(
                 "The Dark Knight",
                 LocalDate.of(2008, 7, 18),
                 1,
-                "978-3-16-148410-0",
+                "Batman",
                 90,
                 45
         ));
@@ -93,6 +103,11 @@ public class Main {
 
         List<CdDTO> cdsTrouvesParTitre = emprunteurService.findCdsByTitre("DARK SIDE");
         for(CdDTO cdDTO : cdsTrouvesParTitre){
+            System.out.println(cdDTO.titre() + " - " + cdDTO.duree() + " - " + cdDTO.genre() + " - " + cdDTO.artiste());
+        }
+
+        List<CdDTO> cdsTrouvesParArtiste = emprunteurService.findCdsByArtiste("Michael Jackson");
+        for(CdDTO cdDTO : cdsTrouvesParArtiste){
             System.out.println(cdDTO.titre() + " - " + cdDTO.duree() + " - " + cdDTO.genre() + " - " + cdDTO.artiste());
         }
         Thread.currentThread().join();

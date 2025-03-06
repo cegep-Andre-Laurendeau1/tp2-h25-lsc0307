@@ -16,4 +16,6 @@ public interface DocumentRepository {
     List<Livre> findLivresByAnnee(int annee);
 
     List<CD> findCdsByTitre(String titre);
+
+    List<CD> findCdsByArtiste(String artiste);
 }

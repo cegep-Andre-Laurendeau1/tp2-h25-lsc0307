@@ -72,4 +72,16 @@ public class EmprunteurService {
         return cdsDTO;
 
     }
+
+    public List<CdDTO> findCdsByArtiste(String artiste){
+        List<CD> cds = documentRepository.findCdsByArtiste(artiste);
+        List<CdDTO> cdsDTO = new ArrayList<>();
+
+        for (CD cd : cds) {
+            CdDTO cdDTO = CdDTO.toDto(cd);
+            cdsDTO.add(cdDTO);
+        }
+
+        return cdsDTO;
+    }
 }
