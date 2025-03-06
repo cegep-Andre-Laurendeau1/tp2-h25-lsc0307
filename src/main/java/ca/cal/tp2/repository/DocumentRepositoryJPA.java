@@ -1,5 +1,6 @@
 package ca.cal.tp2.repository;
 
+import ca.cal.tp2.modele.CD;
 import ca.cal.tp2.modele.Document;
 import ca.cal.tp2.modele.Emprunteur;
 import ca.cal.tp2.modele.Livre;
@@ -49,6 +50,16 @@ public class DocumentRepositoryJPA implements DocumentRepository {
             TypedQuery<Livre> query = entityManager.createQuery(
                     "SELECT l FROM Livre l WHERE YEAR(l.dateParution) = :annee", Livre.class);
             query.setParameter("annee", annee);
+            return query.getResultList();
+        }
+    }
+
+    @Override
+    public  List<CD> findCdsByTitre(String titre) {
+        try (EntityManager entityManager = entityManagerFactory.createEntityManager()) {
+            TypedQuery<CD> query = entityManager.createQuery(
+                    "SELECT c FROM CD c WHERE LOWER(c.titre) LIKE LOWER(:titre)", CD.class);
+            query.setParameter("titre", "%" + titre + "%");
             return query.getResultList();
         }
     }

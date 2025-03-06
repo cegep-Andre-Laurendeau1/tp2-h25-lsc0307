@@ -1,9 +1,11 @@
 package ca.cal.tp2.service;
 
+import ca.cal.tp2.modele.CD;
 import ca.cal.tp2.modele.Emprunteur;
 import ca.cal.tp2.modele.Livre;
 import ca.cal.tp2.repository.DocumentRepository;
 import ca.cal.tp2.repository.PreposeRepository;
+import ca.cal.tp2.service.dto.CdDTO;
 import ca.cal.tp2.service.dto.EmprunteurDTO;
 import ca.cal.tp2.service.dto.LivreDTO;
 
@@ -55,6 +57,19 @@ public class EmprunteurService {
         }
 
         return livresDTO;
+
+    }
+
+    public List<CdDTO> findCdsByTitre(String titre) {
+        List<CD> cds = documentRepository.findCdsByTitre(titre);
+        List<CdDTO> cdsDTO = new ArrayList<>();
+
+        for (CD cd : cds) {
+            CdDTO cdDTO = CdDTO.toDto(cd);
+            cdsDTO.add(cdDTO);
+        }
+
+        return cdsDTO;
 
     }
 }

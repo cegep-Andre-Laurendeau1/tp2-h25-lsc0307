@@ -1,5 +1,6 @@
 package ca.cal.tp2.repository;
 
+import ca.cal.tp2.modele.CD;
 import ca.cal.tp2.modele.Document;
 import ca.cal.tp2.modele.Livre;
 
@@ -14,4 +15,5 @@ public interface DocumentRepository {
 
     List<Livre> findLivresByAnnee(int annee);
 
+    List<CD> findCdsByTitre(String titre);
 }

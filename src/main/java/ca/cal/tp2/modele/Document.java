@@ -27,6 +27,10 @@ public abstract class Document {
     public Document() {
     }
 
+    public int getId() {
+        return id;
+    }
+
     public String getTitre() {
         return titre;
     }

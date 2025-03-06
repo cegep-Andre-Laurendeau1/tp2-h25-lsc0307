@@ -6,6 +6,7 @@ import ca.cal.tp2.repository.DocumentRepositoryJPA;
 import ca.cal.tp2.repository.PreposeRepositoryJPA;
 import ca.cal.tp2.service.EmprunteurService;
 import ca.cal.tp2.service.PreposeService;
+import ca.cal.tp2.service.dto.CdDTO;
 import ca.cal.tp2.service.dto.LivreDTO;
 
 import java.sql.SQLException;
@@ -61,7 +62,8 @@ public class Main {
                 LocalDate.of(1973, 3, 1),
                 1,
                 "978-3-16-148410-0",
-                50
+                50,
+                "Fantasie"
         ));
         preposeService.saveDocument(new DVD(
                 "The Dark Knight",
@@ -87,6 +89,11 @@ public class Main {
         List<LivreDTO> livresTrouvesParAnnee = emprunteurService.findLivresByAnnee(1930);
         for (LivreDTO livreDTO : livresTrouvesParAnnee) {
             System.out.println(livreDTO.titre() + " - " + livreDTO.auteur()+ " - " + livreDTO.editeur() + " - " + livreDTO.nbExemplaires());
+        }
+
+        List<CdDTO> cdsTrouvesParTitre = emprunteurService.findCdsByTitre("DARK SIDE");
+        for(CdDTO cdDTO : cdsTrouvesParTitre){
+            System.out.println(cdDTO.titre() + " - " + cdDTO.duree() + " - " + cdDTO.genre() + " - " + cdDTO.artiste());
         }
         Thread.currentThread().join();
     }

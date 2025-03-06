@@ -11,11 +11,13 @@ public class CD extends Document {
     private String artiste;
     private int duree;
     private int nbJoursEmpruntGratuitement = 14;
+    private String genre;
 
-    public CD(String titre, LocalDate dateParution, int nombreExemplaires, String artiste, int duree) {
+    public CD(String titre, LocalDate dateParution, int nombreExemplaires, String artiste, int duree,String genre) {
         super(titre, dateParution, nombreExemplaires);
         this.artiste = artiste;
         this.duree = duree;
+        this.genre = genre;
     }
 
     public CD() {
@@ -24,6 +26,10 @@ public class CD extends Document {
 
     public String getArtiste() {
         return artiste;
+    }
+
+    public String getGenre() {
+        return genre;
     }
 
     public int getDuree() {
