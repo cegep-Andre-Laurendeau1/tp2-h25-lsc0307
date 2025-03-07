@@ -1,19 +1,18 @@
 package ca.cal.tp2.modele;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
-import jakarta.persistence.UniqueConstraint;
+import jakarta.persistence.*;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "EMPRUNTEUR",uniqueConstraints = {@UniqueConstraint(columnNames = {"nom", "email"})})
 public class Emprunteur extends Utilisateur{
 
-    @OneToMany(mappedBy = "emprunteur")
-    private List<Emprunt> emprunts = new ArrayList<>();
+    @OneToMany(mappedBy = "emprunteur", cascade = CascadeType.PERSIST)
+    private Set<Emprunt> emprunts = new HashSet<>();
 
     public Emprunteur(String nom, String email, String numeroTelephone) {
         super( nom, email, numeroTelephone);
@@ -22,7 +21,7 @@ public class Emprunteur extends Utilisateur{
         super();
     }
 
-    public List<Emprunt> getEmprunts() {
+    public Set<Emprunt> getEmprunts() {
         return emprunts;
     }
 }

@@ -3,6 +3,8 @@ package ca.cal.tp2.modele;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Emprunt {
@@ -18,6 +20,10 @@ public class Emprunt {
     private LocalDate dateEmprunt;
     private String status;
 
+    @OneToMany(mappedBy = "emprunt", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<EmpruntDetail> empruntDetails = new ArrayList<>();
+
+
     public Emprunt(Emprunteur emprunteur, LocalDate dateEmprunt, String status) {
         this.emprunteur = emprunteur;
         this.dateEmprunt = dateEmprunt;
@@ -26,5 +32,10 @@ public class Emprunt {
 
     protected Emprunt() {}
 
-    // Getters et Setters
+    public void addEmpruntDetail(Document document) {
+        LocalDate dateRetourPrevue = LocalDate.now().plusDays(document.getDureeEmpruntEnJours());
+        EmpruntDetail detail = new EmpruntDetail(this, document, dateRetourPrevue, "Emprunté");
+        empruntDetails.add(detail);
+    }
+
 }
