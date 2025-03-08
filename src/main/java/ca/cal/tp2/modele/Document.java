@@ -13,7 +13,7 @@ public abstract class Document {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
     protected String titre;
     protected LocalDate dateParution;
     protected int nbExemplaires;
@@ -27,7 +27,7 @@ public abstract class Document {
     public Document() {
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 

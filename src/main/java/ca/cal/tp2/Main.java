@@ -3,15 +3,15 @@ package ca.cal.tp2;
 import ca.cal.tp2.modele.*;
 import ca.cal.tp2.repository.DocumentRepository;
 import ca.cal.tp2.repository.DocumentRepositoryJPA;
+import ca.cal.tp2.repository.EmpruntRepositoryJPA;
 import ca.cal.tp2.repository.PreposeRepositoryJPA;
 import ca.cal.tp2.service.EmprunteurService;
 import ca.cal.tp2.service.PreposeService;
-import ca.cal.tp2.service.dto.CdDTO;
-import ca.cal.tp2.service.dto.DvdDTO;
-import ca.cal.tp2.service.dto.LivreDTO;
+import ca.cal.tp2.service.dto.*;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.List;
 
 public class Main {
@@ -94,7 +94,7 @@ public class Main {
                 60
         ));
 
-        EmprunteurService emprunteurService = new EmprunteurService(new DocumentRepositoryJPA());
+        EmprunteurService emprunteurService = new EmprunteurService(new DocumentRepositoryJPA(), new PreposeRepositoryJPA(),new EmpruntRepositoryJPA());
 
         List<LivreDTO> livresTrouvesParTitre = emprunteurService.findLivresByTitre("SEIGNEUR");
         for (LivreDTO livreDTO : livresTrouvesParTitre) {
@@ -123,13 +123,26 @@ public class Main {
 
         List<DvdDTO> dvdsTrouvesParTitre = emprunteurService.findDvdsByTitre("Knight");
         for(DvdDTO dvdDTO : dvdsTrouvesParTitre){
-            System.out.println(dvdDTO.titre() + " - " + dvdDTO.duree() + " - " + dvdDTO.director() + " - " + dvdDTO.dateParution() + " - " + dvdDTO.nombreExemplaires() + " - " + dvdDTO.rating() );
+            System.out.println(dvdDTO.titre() + " - " + dvdDTO.duree() + " - " + dvdDTO.director() + " - " + dvdDTO.dateParution() + " - " + dvdDTO.nbExemplaires() + " - " + dvdDTO.rating() );
         }
 
         List<DvdDTO> dvdsTrouvesParDirector = emprunteurService.findDvdsByDirector("batman");
         for(DvdDTO dvdDTO : dvdsTrouvesParDirector){
-            System.out.println(dvdDTO.titre() + " - " + dvdDTO.duree() + " - " + dvdDTO.director() + " - " + dvdDTO.dateParution() + " - " + dvdDTO.nombreExemplaires() + " - " + dvdDTO.rating() );
+            System.out.println(dvdDTO.titre() + " - " + dvdDTO.duree() + " - " + dvdDTO.director() + " - " + dvdDTO.dateParution() + " - " + dvdDTO.nbExemplaires() + " - " + dvdDTO.rating() );
         }
+
+        EmprunteurDTO emprunteur = preposeService.findByNameAndEmail("Leandro", "abc@gmail.com");
+        DocumentDTO livreEmprunte1 = emprunteurService.findLivresByTitre("Seigneur des anneaux").get(0);
+        DocumentDTO livreEmprunte3 = emprunteurService.findLivresByTitre("Seigneur des anneaux").get(0);
+        DocumentDTO livreEmprunte4 = emprunteurService.findLivresByTitre("Seigneur des anneaux").get(0);
+        DocumentDTO livreEmprunte5 = emprunteurService.findLivresByTitre("Seigneur des anneaux").get(0);
+        DocumentDTO livreEmprunte2 = emprunteurService.findLivresByTitre("Le hobbit").get(0);
+        DocumentDTO cdEmprunte1 = emprunteurService.findCdsByTitre("The Dark Side of the Moon").get(0);
+        DocumentDTO cdEmprunte2 = emprunteurService.findCdsByTitre("The Dark Side of the Moon").get(0);
+        DocumentDTO dvdEmprunte1 = emprunteurService.findDvdsByTitre("The Dark Knight").get(0);
+        DocumentDTO dvdEmprunte2 = emprunteurService.findDvdsByTitre("The Dark Knight").get(0);
+        emprunteurService.emprunteDocument(emprunteur.name(),emprunteur.email(), Arrays.asList(livreEmprunte1, livreEmprunte2, livreEmprunte3,livreEmprunte4,livreEmprunte5,cdEmprunte1,cdEmprunte2,dvdEmprunte1,dvdEmprunte2));
+
 
 
         Thread.currentThread().join();

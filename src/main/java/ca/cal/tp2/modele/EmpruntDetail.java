@@ -8,7 +8,7 @@ import java.time.LocalDate;
 public class EmpruntDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int lineItemID;
+    private long id;
 
     @ManyToOne
     @JoinColumn(name = "emprunt_id")
@@ -49,4 +49,8 @@ public class EmpruntDetail {
     public LocalDate getDateRetourActuelle() {
         return dateRetourActuelle;
     }
+
+   public Document getDocument(){
+        return document;
+   }
 }
