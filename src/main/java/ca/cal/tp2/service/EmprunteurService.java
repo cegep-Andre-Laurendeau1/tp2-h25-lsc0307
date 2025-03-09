@@ -4,14 +4,10 @@ import ca.cal.tp2.modele.*;
 import ca.cal.tp2.repository.DocumentRepository;
 import ca.cal.tp2.repository.EmpruntRepository;
 import ca.cal.tp2.repository.PreposeRepository;
-import ca.cal.tp2.repository.PreposeRepositoryJPA;
 import ca.cal.tp2.service.dto.*;
-
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 public class EmprunteurService {
     private final DocumentRepository documentRepository;
@@ -137,7 +133,7 @@ public class EmprunteurService {
             }
             if(documentTrouve == null){
                 System.out.println("Document " + document.titre() + " non existant!");
-                return;
+                continue;
             }
 
             long count =  emprunt.getEmpruntDetails().stream()

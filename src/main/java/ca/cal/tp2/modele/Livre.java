@@ -2,8 +2,7 @@ package ca.cal.tp2.modele;
 
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import jakarta.persistence.UniqueConstraint;
+
 
 import java.time.LocalDate;
 

@@ -1,7 +1,7 @@
 package ca.cal.tp2.modele;
 
 import java.time.LocalDate;
-import java.util.Date;
+
 
 public class Amende {
     private long id;

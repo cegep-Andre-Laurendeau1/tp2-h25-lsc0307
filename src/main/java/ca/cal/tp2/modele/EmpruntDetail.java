@@ -34,22 +34,6 @@ public class EmpruntDetail {
 
     }
 
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public LocalDate getDateRetourPrevue() {
-        return dateRetourPrevue;
-    }
-
-    public LocalDate getDateRetourActuelle() {
-        return dateRetourActuelle;
-    }
-
    public Document getDocument(){
         return document;
    }

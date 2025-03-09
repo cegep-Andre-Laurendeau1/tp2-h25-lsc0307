@@ -1,7 +1,6 @@
 package ca.cal.tp2.repository;
 
 import ca.cal.tp2.modele.Emprunt;
-import ca.cal.tp2.modele.EmpruntDetail;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
