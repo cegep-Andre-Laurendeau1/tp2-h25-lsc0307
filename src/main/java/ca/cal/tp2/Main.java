@@ -98,37 +98,37 @@ public class Main {
 
         List<LivreDTO> livresTrouvesParTitre = emprunteurService.findLivresByTitre("SEIGNEUR");
         for (LivreDTO livreDTO : livresTrouvesParTitre) {
-            System.out.println(livreDTO.titre() + " - " + livreDTO.auteur()+ " - " + livreDTO.editeur() + " - " + livreDTO.nbExemplaires());
+            System.out.println(livreDTO);
         }
 
         List<LivreDTO> livresTrouvesParAuteur = emprunteurService.findLivresByAuteur("TOLKIEN");
         for (LivreDTO livreDTO : livresTrouvesParAuteur) {
-            System.out.println(livreDTO.titre() + " - " + livreDTO.auteur()+ " - " + livreDTO.editeur() + " - " + livreDTO.nbExemplaires());
+            System.out.println(livreDTO);
         }
 
         List<LivreDTO> livresTrouvesParAnnee = emprunteurService.findLivresByAnnee(1930);
         for (LivreDTO livreDTO : livresTrouvesParAnnee) {
-            System.out.println(livreDTO.titre() + " - " + livreDTO.auteur()+ " - " + livreDTO.editeur() + " - " + livreDTO.nbExemplaires());
+            System.out.println(livreDTO);
         }
 
         List<CdDTO> cdsTrouvesParTitre = emprunteurService.findCdsByTitre("DARK SIDE");
         for(CdDTO cdDTO : cdsTrouvesParTitre){
-            System.out.println(cdDTO.titre() + " - " + cdDTO.duree() + " - " + cdDTO.genre() + " - " + cdDTO.artiste());
+            System.out.println(cdDTO);
         }
 
         List<CdDTO> cdsTrouvesParArtiste = emprunteurService.findCdsByArtiste("Michael Jackson");
         for(CdDTO cdDTO : cdsTrouvesParArtiste){
-            System.out.println(cdDTO.titre() + " - " + cdDTO.duree() + " - " + cdDTO.genre() + " - " + cdDTO.artiste());
+            System.out.println(cdDTO);
         }
 
         List<DvdDTO> dvdsTrouvesParTitre = emprunteurService.findDvdsByTitre("Knight");
         for(DvdDTO dvdDTO : dvdsTrouvesParTitre){
-            System.out.println(dvdDTO.titre() + " - " + dvdDTO.duree() + " - " + dvdDTO.director() + " - " + dvdDTO.dateParution() + " - " + dvdDTO.nbExemplaires() + " - " + dvdDTO.rating() );
+            System.out.println(dvdDTO);
         }
 
         List<DvdDTO> dvdsTrouvesParDirector = emprunteurService.findDvdsByDirector("batman");
         for(DvdDTO dvdDTO : dvdsTrouvesParDirector){
-            System.out.println(dvdDTO.titre() + " - " + dvdDTO.duree() + " - " + dvdDTO.director() + " - " + dvdDTO.dateParution() + " - " + dvdDTO.nbExemplaires() + " - " + dvdDTO.rating() );
+            System.out.println(dvdDTO);
         }
 
         EmprunteurDTO emprunteur = preposeService.findByNameAndEmail("Leandro", "abc@gmail.com");
