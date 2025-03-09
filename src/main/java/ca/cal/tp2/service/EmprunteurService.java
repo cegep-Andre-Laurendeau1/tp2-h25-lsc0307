@@ -156,4 +156,38 @@ public class EmprunteurService {
 
     }
 
+    public String afficherEmprunts(long emprunteurId) {
+        List<Object[]> emprunts = empruntRepository.findEmpruntsByEmprunteurId(emprunteurId);
+        StringBuilder result = new StringBuilder();
+
+        Object[] premierEmprunt = emprunts.get(0);
+        Long emprunteurIdUnique = (Long) premierEmprunt[0];
+        String nomEmprunteur = (String) premierEmprunt[1];
+        String numeroTelephone = (String) premierEmprunt[2];
+
+        result.append("Emprunteur ID: ").append(emprunteurIdUnique).append(", ")
+                .append("Nom: ").append(nomEmprunteur).append(", ")
+                .append("Téléphone: ").append(numeroTelephone).append("\n");
+
+        result.append("Détails des emprunts:\n");
+
+        boolean detailsempruntExistants = false;
+
+        for (Object[] emprunt : emprunts) {
+            if (emprunt[3] != null && emprunt[4] != null && emprunt[5] != null) {
+                detailsempruntExistants = true;
+                result.append("Date d'emprunt: ").append(emprunt[3])
+                        .append(", Date de retour prévue: ").append(emprunt[4])
+                        .append(", Document: ").append(emprunt[5])
+                        .append("\n");
+            }
+        }
+
+        if (!detailsempruntExistants) {
+            result.append("Aucun détail d'emprunt disponible pour cet emprunteur.\n");
+        }
+
+        return result.toString();
+    }
+
 }

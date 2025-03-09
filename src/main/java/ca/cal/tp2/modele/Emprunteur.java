@@ -24,4 +24,13 @@ public class Emprunteur extends Utilisateur{
     public Set<Emprunt> getEmprunts() {
         return emprunts;
     }
+
+    @Override
+    public String toString() {
+        return "Emprunteur{" +
+                "nom='" + getNom() + '\'' +
+                ", email='" + getEmail() + '\'' +
+                ", numéro de téléphone='" + getNumeroTelephone() + '\'' +
+                '}';
+    }
 }

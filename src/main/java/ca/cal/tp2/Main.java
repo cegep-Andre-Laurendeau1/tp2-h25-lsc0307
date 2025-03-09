@@ -143,6 +143,12 @@ public class Main {
         DocumentDTO dvdEmprunte2 = emprunteurService.findDvdsByTitre("The Dark Knight").get(0);
         emprunteurService.emprunteDocument(emprunteur.name(),emprunteur.email(), Arrays.asList(livreEmprunte1, livreEmprunte2, livreEmprunte3,livreEmprunte4,livreEmprunte5,cdEmprunte1,cdEmprunte2,dvdEmprunte1,dvdEmprunte2));
 
+        EmprunteurDTO emprunteur1 = preposeService.findByNameAndEmail("Leandro", "abc@gmail.com");
+        System.out.println(emprunteurService.afficherEmprunts(emprunteur1.id()));
+
+        EmprunteurDTO emprunteur2 = preposeService.findByNameAndEmail("Moi", "def@gmail.com");
+        System.out.println(emprunteurService.afficherEmprunts(emprunteur2.id()).toString());
+
 
 
         Thread.currentThread().join();
